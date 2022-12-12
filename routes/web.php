@@ -13,6 +13,9 @@ use App\Http\Controllers\CustomAuthController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//Route::get('dashboard', [CustomAuthController::class, 'dashboard'])->name('login');
+
 Route::get('/', [CustomAuthController::class, 'index'])->name('login');
 
 Route::get('dashboard', [CustomAuthController::class, 'dashboard'])->name('dashboard');

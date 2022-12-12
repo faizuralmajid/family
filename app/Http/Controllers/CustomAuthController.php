@@ -75,6 +75,7 @@ class CustomAuthController extends Controller
     {
         if (Auth::check()) {
             $user = Auth::user();
+            //dd($user->subscribed);
             return view('dashboard')->with('hakakses', $user->subscribed);
         }
 
@@ -120,7 +121,7 @@ class CustomAuthController extends Controller
 
         Session::flush();
         Auth::logout();
- 
+
         return redirect()->route('login')->with('success', 'Data Berhasil Di Update');
     }
 
