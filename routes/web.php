@@ -13,8 +13,12 @@ use App\Http\Controllers\CustomAuthController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', [CustomAuthController::class, 'index'])->name('login');
 
 Route::get('dashboard', [CustomAuthController::class, 'dashboard'])->name('dashboard');
+Route::get('event', [CustomAuthController::class, 'event'])->name('event');
+
+
 Route::get('login', [CustomAuthController::class, 'index'])->name('login');
 Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom');
 Route::get('registration', [CustomAuthController::class, 'registration'])->name('register-user');
@@ -22,17 +26,16 @@ Route::post('custom-registration', [CustomAuthController::class, 'customRegistra
 Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
 
 Route::get('upgrade', [CustomAuthController::class, 'upgrade'])->name('register.upgrade');
-
-Route::post('updatesubcribed/{id}', [CustomAuthController::class, 'updatesubcribed'])->name('update.subcribed');
+Route::get('updatesubcribed', [CustomAuthController::class, 'updatesubcribed'])->name('unsubscribed');
 
 
 Route::get('congratulation', [CustomAuthController::class, 'congratulation'])->name('upgrade.congratulation');
+
 
 Route::get('pay', [CustomAuthController::class, 'pay'])->name('pembayaran.member');
 Route::get('payGold', [CustomAuthController::class, 'payGold'])->name('pembayaran.memberGold');
 Route::post('addpay', [CustomAuthController::class, 'addpay'])->name('update-addpay');
 Route::get('listpembayaran', [CustomAuthController::class, 'listpembayaran'])->name('admin.listpembayaran');
-
 
 
 Route::get('verifikasi/{id}', [CustomAuthController::class, 'verifikasi'])->name('verifikasi');

@@ -7,6 +7,7 @@
 
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <!-- Bootstrap CSS -->
+    <title>Family Fun Day</title>
     <link rel="stylesheet" href={{ URL::asset('css/bootstrap.min.css') }}>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href={{ URL::asset('css/style.css') }}>
@@ -15,7 +16,7 @@
 <body>
     <br>
     <form>
-        <input type="button" value="<-" onclick="history.go(-1)" style="margin-left: 20px">
+        <a type="button" onclick="history.go(-1)" style="margin-left: 20px"><i class="bi bi-arrow-bar-left"></i></a>
     </form>
     <div class="container h-100 " style="margin-top: 100px">
         <div class="row h-200 justify-content-center align-items-center">
@@ -28,7 +29,7 @@
                                     <img src="{{ URL::asset('icons/icon_premium.svg') }}" style="width: 40px" /> Free
                                 </h3>
 
-                                <p class="black-text text-left px-2" style="padding: 10px">Rp0 / month</p>
+                                <p class="black-text text-left px-2" style="padding: 10px;font-size: 20pt">Rp0 <span style="font-size: 10pt"> / month</span></p>
                                 <hr>
                                 <p class="text-muted text-center fs-12 mb-1 px-2" style="padding: 10px"><i
                                         class="bi bi-check-circle-fill black-text"></i> Dapat diikuti oleh 100
@@ -55,10 +56,10 @@
                             <h3 class="text-muted text-left fs-12 mb-1 px-2 black-text " style="padding: 10px">
                                 <h3 class="text-muted text-left fs-12 mb-1 px-2 black-text">
                                     <img src="{{ URL::asset('icons/icon_premium_gold.svg') }}"
-                                        style="width: 40px; color: yellow" /> Free
+                                        style="width: 40px; color: yellow" /> Gold
                                 </h3>
 
-                                <p class="black-text text-left px-2" style="padding: 10px">Rp0 / month</p>
+                                <p class="black-text text-left px-2" style="padding: 10px;font-size: 20pt">Rp25K <span style="font-size: 10pt"> / month</span> </p>
                                 <hr>
                                 <p class="text-muted text-center fs-12 mb-1 px-2" style="padding: 10px"><i
                                         class="bi bi-check-circle-fill black-text"></i> Dapat diikuti oleh 100
@@ -85,10 +86,10 @@
                             <h3 class="text-muted text-left fs-12 mb-1 px-2 black-text " style="padding: 10px">
                                 <h3 class="text-muted text-left fs-12 mb-1 px-2 black-text">
                                     <img src="{{ URL::asset('icons/icon_premium_bronze.svg') }}" style="width: 40px" />
-                                    Free
+                                    Platinum
                                 </h3>
 
-                                <p class="black-text text-left px-2" style="padding: 10px">Rp0 / month</p>
+                                <p class="black-text text-left px-2" style="padding: 10px; font-size: 20pt">Rp50K <span style="font-size: 10pt">/ month</span> </p>
                                 <hr>
                                 <p class="text-muted text-center fs-12 mb-1 px-2" style="padding: 10px"><i
                                         class="bi bi-check-circle-fill black-text"></i> Dapat diikuti oleh 100

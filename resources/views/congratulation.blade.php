@@ -5,14 +5,16 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <title>Family Fun Day</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href={{ URL::asset('css/bootstrap.min.css') }}>
 
 </head>
 
 <body class="h-100">
-
+    <form>
+        <a type="button" onclick="history.go(-1)" style="margin-left: 20px"><i class="bi bi-arrow-bar-left"></i></a>
+    </form>
     <div class="container h-100">
         <div class="row h-100 justify-content-center align-items-center">
             <div class="col-10 col-md-8 col-lg-6">

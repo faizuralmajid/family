@@ -4,8 +4,6 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
-    <meta name="description" content="Web Admin untuk acara Family Day.">
-    <meta name="author" content="Muhammad Rizqi">
     <title>Family Day Admin</title>
 
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
@@ -70,10 +68,11 @@
                                     <td>{{ $row->no_pembelian }}</td>
                                     <td>{{ $row->name }}</td>
                                     <td>{{ $row->typesubscribe }}</td>
-                                    <td>{{ $row->durasi}}</td>
-                                    <td>{{ $row->total_bayar}}</td>
+                                    <td>{{ $row->durasi }}</td>
+                                    <td>{{ $row->total_bayar }}</td>
                                     <td>{{ $row->status }}</td>
-                                    <td><a href="{{ route('verifikasi',$row->no_pembelian) }}" class="btn btn-warning">Detail</a></td>
+                                    <td><a href="{{ route('verifikasi', $row->no_pembelian) }}"
+                                            class="btn btn-warning">Detail</a></td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -98,21 +97,20 @@
                     <div class="famdaynav__categoriy py-3">
                         <ul class="famdaynav__menu nav flex-column">
                             <li class="nav-item has-sub">
-                                <a href="https://dev-famday.air.id" class="mininav-toggle nav-link collapsed"><i
+                                <a href="{{ route('dashboard') }}" class="mininav-toggle nav-link collapsed"><i
                                         class="bi bi-house-door"></i>
                                     <span class="nav-label ms-1">Dashboard</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="https://dev-famday.air.id/events/list" class="nav-link">
+                                <a href="{{ route('event') }}" class="nav-link">
                                     <i class="bi bi-calendar3"></i>
                                     <span class="nav-label ms-1">Events</span>
                                 </a>
                             </li>
                             @if ($hakakses == 'superuser')
                                 <li class="nav-item">
-                                    <a href="https://dev-famday.air.id/users/list" class="nav-link mininav-toggle"><i
-                                            class="bi bi-people"></i>
+                                    <a href="" class="nav-link mininav-toggle"><i class="bi bi-people"></i>
                                         <span class="nav-label mininav-content ms-1">Daftar User</span>
                                     </a>
                                 </li>
@@ -122,7 +120,21 @@
                                         <span class="nav-label mininav-content ms-1">List Pembayaran</span>
                                     </a>
                                 </li>
+                            @elseif ($hakakses !== 'free' && $hakakses !== 'waiting')
+                                <li class="nav-item">
+                                    <a href="{{ route('unsubscribed') }}" class="nav-link mininav-toggle"><i
+                                            class="bi bi-envelope-slash"></i>
+                                        <span class="nav-label mininav-content ms-1 btn btn-danger">Unsubscribe</span>
+                                    </a>
+                                </li>
+                            @elseif ($hakakses == 'waiting')
+                                <li class="nav-item">
+                                    <a class="nav-link mininav-toggle"><i class="bi bi-hourglass-split"></i>
+                                        <span class="nav-label mininav-content ms-1 btn btn-primary">Waiting</span>
+                                    </a>
+                                </li>
                             @endif
+
                         </ul>
                     </div>
                 </div>

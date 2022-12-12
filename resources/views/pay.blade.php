@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <!-- Bootstrap CSS -->
+    <title>Family Fun Day</title>
     <link rel="stylesheet" href={{ URL::asset('css/bootstrap.min.css') }}>
     <link rel="stylesheet" href={{ URL::asset('css/login.css') }}>
     <link rel="stylesheet" href={{ URL::asset('css/style.css') }}>
@@ -15,7 +16,9 @@
 </head>
 
 <body class="h-100">
-
+    <form>
+        <a type="button" onclick="history.go(-1)" style="margin-left: 20px"><i class="bi bi-arrow-bar-left"></i></a>
+    </form>
     <div class="container h-100">
         <div class="row h-100 justify-content-center align-items-center">
             <h1 class="text-center" style="padding-bottom: 0px; padding-top: 10px">Dapatkan Premium Platinum</h1>

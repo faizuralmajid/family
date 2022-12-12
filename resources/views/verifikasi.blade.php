@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <!-- Bootstrap CSS -->
+    <title>Family Fun Day</title>
     <link rel="stylesheet" href={{ URL::asset('css/bootstrap.min.css') }}>
     <link rel="stylesheet" href={{ URL::asset('css/login.css') }}>
     <?php function rupiah($angka)
@@ -17,15 +18,16 @@
 </head>
 
 <body class="h-100">
-
+    <form>
+        <a type="button" onclick="history.go(-1)" style="margin-left: 20px"><i class="bi bi-arrow-bar-left"></i></a>
+    </form>
     <div class="container h-100">
         <div class="row h-100 justify-content-center align-items-center">
-            <h1 class="text-center" style="padding-bottom: 30px; padding-top: 10px">Verifikasi Pembayaran</h1>
+            <h1 class="text-center" style="padding-bottom: 0px; padding-top: 10px">Verifikasi Pembayaran</h1>
             <div class="col-1 col-md-1 col-lg-1">
             </div>
             <div class="col-5 col-md-5 col-lg-4">
                 <img src="{{ URL::asset('pembayaran/' . $datapay[0]->path) }}" style="width: 280px" alt="">
-
             </div>
             <div class="col-5 col-md-5 col-lg-6" style="background: #F7F5F5; padding: 20px">
                 <form method="post" action="{{ route('verifikasipay') }}">

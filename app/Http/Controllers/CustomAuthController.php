@@ -14,7 +14,11 @@ class CustomAuthController extends Controller
 
     public function index()
     {
-        return view('auth.login');
+        if (!Auth::check()) {
+            $user = Auth::user();
+            return view('auth.login');
+        }
+        return redirect()->route('dashboard')->with('success', 'Sudah Login');
     }
 
     public function customLogin(Request $request)
@@ -77,6 +81,16 @@ class CustomAuthController extends Controller
         return redirect("login")->withSuccess('You are not allowed to access');
     }
 
+    public function event()
+    {
+        if (Auth::check()) {
+            $user = Auth::user();
+            return view('event')->with('hakakses', $user->subscribed);
+        }
+
+        return redirect("login")->withSuccess('You are not allowed to access');
+    }
+
 
     public function signOut()
     {
@@ -91,18 +105,23 @@ class CustomAuthController extends Controller
         return view('congratulation');
     }
 
-    public function updatesubcribed(Request $request, $id)
-    {
-        $user = Auth::user();
-        $data = User::where($user->id);
-        $data->update(array('subscribed' => $id));
-
-        return redirect()->route('pay')->with('success', 'Data Berhasil Di Update');
-    }
-
     public function upgrade()
     {
         return view('upgrade');
+    }
+
+    public function updatesubcribed(Request $request)
+    {
+        $user = Auth::user();
+        $data2 = User::where('id', $user->id)
+            ->update([
+                'subscribed' => 'free',
+            ]);
+
+        Session::flush();
+        Auth::logout();
+ 
+        return redirect()->route('login')->with('success', 'Data Berhasil Di Update');
     }
 
     public function pay()
@@ -117,6 +136,9 @@ class CustomAuthController extends Controller
 
     public function addpay(Request $request)
     {
+        $karakter = '123456789ABCDEFGHI';
+        $shuffle  = str_shuffle($karakter);
+
         $request->validate([
             'payimage' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -126,7 +148,7 @@ class CustomAuthController extends Controller
         $request->file('payimage')->move(public_path('pembayaran'), $imageName);
 
         $user = Auth::user();
-        $no_pembelian       = $request->input('no_pembelian');
+        $no_pembelian       = "P00-" . $shuffle;
         $no_rekening       = $request->input('no_rekening');
         $id_user            = $user->id;
         $typesubscribe     = $request->input('typesubscribe');
@@ -147,6 +169,11 @@ class CustomAuthController extends Controller
         $save->path = $path;
 
         $save->save();
+
+        $data2 = User::where('id', $user->id)
+            ->update([
+                'subscribed' => 'waiting',
+            ]);
 
         return redirect('congratulation')->with('status', 'Bukti Pembayaran Sukses');
     }
@@ -177,7 +204,7 @@ class CustomAuthController extends Controller
                 'status' => $request->input('status'),
             ]);
 
-            //dd($request->input('id_user'));
+        //dd($request->input('id_user'));
 
         $data2 = User::where('id', $request->input('id_user'))
             ->update([
